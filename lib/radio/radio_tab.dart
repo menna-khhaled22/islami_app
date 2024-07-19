@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/app_config_provider.dart';
 
 class RadioTab extends StatelessWidget {
   const RadioTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     double screenHeight = MediaQuery.of(context).size.height;
     return Column(
       children: [
@@ -23,7 +27,9 @@ class RadioTab extends StatelessWidget {
         SizedBox(
           height: screenHeight * 0.1,
         ),
-        Image.asset('assets/images/play_pause.png')
+        provider.isDarkMode()
+            ? Image.asset('assets/images/play_pause_dark.png')
+            : Image.asset('assets/images/play_pause.png')
       ],
     );
   }
