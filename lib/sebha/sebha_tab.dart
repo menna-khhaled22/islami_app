@@ -3,6 +3,9 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami_app/app_colors.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/app_config_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -35,6 +38,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<AppConfigProvider>(context);
     double screenHeight = MediaQuery.of(context).size.height;
     return Center(
       child: Column(
@@ -47,7 +51,9 @@ class _SebhaTabState extends State<SebhaTab> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 37),
-                child: Image.asset('assets/images/head_of_seb7a.png'),
+                child: provider.isDarkMode()
+                    ? Image.asset('assets/images/dark_head_of_seb7a.png')
+                    : Image.asset('assets/images/head_of_seb7a.png'),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 78),
@@ -57,7 +63,10 @@ class _SebhaTabState extends State<SebhaTab> {
                     },
                     child: Transform.rotate(
                         angle: rotationAngle * (math.pi / 180),
-                        child: Image.asset('assets/images/body_of_seb7a.png'))),
+                        child: provider.isDarkMode()
+                            ? Image.asset(
+                                'assets/images/dark_body_of_seb7a.png')
+                            : Image.asset('assets/images/body_of_seb7a.png'))),
               ),
             ],
           ),
@@ -75,7 +84,9 @@ class _SebhaTabState extends State<SebhaTab> {
             width: 69,
             height: 81,
             decoration: BoxDecoration(
-                color: Color.fromRGBO(183, 147, 95, 0.57),
+                color: provider.isDarkMode()
+                    ? AppColors.primaryDarkColor
+                    : Color.fromRGBO(183, 147, 95, 0.57),
                 borderRadius: BorderRadius.circular(25)),
             child: Center(
                 child: Text(
@@ -90,16 +101,20 @@ class _SebhaTabState extends State<SebhaTab> {
             width: 150,
             height: 51,
             decoration: BoxDecoration(
-                color: AppColors.primaryLightColor,
-                borderRadius: BorderRadius.circular(25)),
+                  color: provider.isDarkMode()
+                      ? AppColors.yellowColor
+                      : AppColors.primaryLightColor,
+                  borderRadius: BorderRadius.circular(25)),
             child: Center(
               child: Text(Tasbeha[TasbehaIndex],
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 25)),
-            ),
-          )
+                  style: provider.isDarkMode()
+                      ? Theme.of(context)
+                          .textTheme
+                          .bodySmall!
+                          .copyWith(color: AppColors.blackColor)
+                      : Theme.of(context).textTheme.bodySmall,
+                ),
+              ))
         ],
       ),
     );
