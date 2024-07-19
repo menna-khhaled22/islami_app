@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class AppConfigProvider extends ChangeNotifier {
   ///ba7ot el data elly 7at2srly 3ala kaza widget 3ndy
   String applanguage = 'en';
+  ThemeMode appTheme = ThemeMode.light;
 
   void changeLanguage(String newLanguage) {
     if (applanguage == newLanguage) {
@@ -13,5 +14,17 @@ class AppConfigProvider extends ChangeNotifier {
 
     ///lw la msh nafs el lang yb2a 75ly el lang bt3ty = lang elly a5trha el user
     notifyListeners();
+  }
+
+  void changeTheme(ThemeMode newMode) {
+    if (appTheme == newMode) {
+      return;
+    }
+    appTheme = newMode;
+    notifyListeners();
+  }
+
+  bool isDarkMode() {
+    return appTheme == ThemeMode.dark;
   }
 }
