@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:islami_app/app_colors.dart';
+import 'package:islami_app/providers/app_config_provider.dart';
 import 'package:islami_app/quran/item_surah_details.dart';
+import 'package:provider/provider.dart';
 
 class SurahDetailsScreen extends StatefulWidget {
   static const String routeName = 'surah_details';
@@ -16,12 +18,20 @@ class _SurahDetailsScreenState extends State<SurahDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var args = ModalRoute.of(context)!.settings.arguments as SurahDetailsArgs;
+    var provider = Provider.of<AppConfigProvider>(context);
     if (verses.isEmpty) {
       loadFile(args.index);
     }
     return Stack(
       children: [
-        Image.asset(
+        provider.isDarkMode()
+            ? Image.asset(
+                'assets/images/background_dark.png',
+                width: double.infinity,
+                height: double.infinity,
+                fit: BoxFit.fill,
+              )
+            : Image.asset(
           'assets/images/background.png',
           width: double.infinity,
           height: double.infinity,
@@ -43,12 +53,16 @@ class _SurahDetailsScreenState extends State<SurahDetailsScreen> {
                       horizontal: MediaQuery.of(context).size.width * 0.06,
                       vertical: MediaQuery.of(context).size.height * 0.09),
                   decoration: BoxDecoration(
-                      color: AppColors.whiteColor,
+                      color: provider.isDarkMode()
+                          ? AppColors.primaryDarkColor
+                          : AppColors.whiteColor,
                       borderRadius: BorderRadius.circular(24)),
                   child: ListView.separated(
                     separatorBuilder: (context, index) {
                       return Divider(
-                        color: AppColors.primaryLightColor,
+                        color: provider.isDarkMode()
+                            ? AppColors.yellowColor
+                            : AppColors.primaryLightColor,
                         thickness: 2,
                       );
                     },
