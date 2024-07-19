@@ -27,10 +27,12 @@ class MyApp extends StatelessWidget {
         SurahDetailsScreen.routeName: (context) => SurahDetailsScreen(),
         HadethDetailsScreen.routeName: (context) => HadethDetailsScreen(),
       },
+      theme: MyThemeData.LightMode,
+      darkTheme: MyThemeData.DarkMode,
+      themeMode: provider.appTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       locale: Locale(provider.applanguage),
-      theme: MyThemeData.LightMode,
     );
   }
 }
