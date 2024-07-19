@@ -45,20 +45,28 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
   }
 
   Widget getSelectedWidget(String text) {
+    var provider = Provider.of<AppConfigProvider>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           text,
-          style: Theme.of(context)
-              .textTheme
+          style: provider.isDarkMode()
+              ? Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: AppColors.yellowColor)
+              : Theme.of(context)
+                  .textTheme
               .bodySmall!
               .copyWith(color: AppColors.primaryLightColor),
         ),
         Icon(
           Icons.check,
           size: 30,
-          color: AppColors.primaryLightColor,
+          color: provider.isDarkMode()
+              ? AppColors.yellowColor
+              : AppColors.primaryLightColor,
         )
       ],
     );
