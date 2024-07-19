@@ -11,5 +11,8 @@
 "arabic" : "العربية",
 "english" : "الانجليزية",
 "tasbeha_count" : "عدد التسبيحات",
-"holy_quran_radio" : "اذاعة القرآن الكريم"
+"holy_quran_radio" : "اذاعة القرآن الكريم",
+"theme" : "النمط",
+"dark" : "مظلم",
+"light" : "مضيء"
 }

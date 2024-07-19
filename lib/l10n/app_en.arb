@@ -11,5 +11,8 @@
 "arabic" : "Arabic",
 "english" : "English",
 "tasbeha_count" : "Tasbeha count",
-"holy_quran_radio" : "Holy Quran Radio"
+"holy_quran_radio" : "Holy Quran Radio",
+"theme" : "Theme",
+"dark" : "Dark",
+"light" : "Light"
 }
