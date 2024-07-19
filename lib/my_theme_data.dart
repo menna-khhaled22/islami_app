@@ -29,4 +29,34 @@ class MyThemeData {
             fontSize: 25,
             fontWeight: FontWeight.bold),
       ));
+
+  static final ThemeData DarkMode = ThemeData(
+      canvasColor: AppColors.primaryDarkColor,
+      primaryColor: AppColors.primaryDarkColor,
+      scaffoldBackgroundColor: Colors.transparent,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+      ),
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        selectedItemColor: AppColors.yellowColor,
+        //showUnselectedLabels: true,
+      ),
+      bottomSheetTheme:
+          BottomSheetThemeData(backgroundColor: AppColors.primaryDarkColor),
+      textTheme: TextTheme(
+        bodyLarge: TextStyle(
+            color: AppColors.whiteColor,
+            fontSize: 30,
+            fontWeight: FontWeight.bold),
+        bodyMedium: TextStyle(
+            color: AppColors.whiteColor,
+            fontSize: 25,
+            fontWeight: FontWeight.w700),
+        bodySmall: TextStyle(
+            color: AppColors.whiteColor,
+            fontSize: 25,
+            fontWeight: FontWeight.bold),
+      ));
 }
