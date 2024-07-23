@@ -89,10 +89,23 @@ class _SettingsTabState extends State<SettingsTab> {
                   Icon(
                     Icons.arrow_drop_down,
                     size: 40,
-                  )
+                  ),
                 ],
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                  onPressed: () async {
+                    await provider.SavePreferences();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Preferences saved successfully')),
+                    );
+                  },
+                  child: Text('Save current state')),
+            ],
           )
         ],
       ),
