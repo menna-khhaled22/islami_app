@@ -29,10 +29,10 @@ class MyApp extends StatelessWidget {
       },
       theme: MyThemeData.LightMode,
       darkTheme: MyThemeData.DarkMode,
-      themeMode: provider.appTheme,
+      themeMode: provider.AppTheme,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      locale: Locale(provider.applanguage),
+      locale: Locale(provider.Applanguage),
     );
   }
 }
